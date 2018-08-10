@@ -1,0 +1,45 @@
+#!/bin/bash
+# Disable uneeded services for music
+
+pkill owncloud
+
+# Virtual box stuff
+sudo service virtualbox start
+sudo service virtualbox-guest-utils start
+
+# Networked stuff
+# sudo service network-manager stop
+sudo service samba start
+sudo service saned start
+sudo service smbd start
+sudo service nmbd start
+sudo service avahi-daemon start
+sudo service ntp start
+sudo service ufw start	
+
+# Stop sensors service (temperature, fan, etc...)
+sudo service lm-sensors start
+sudo service thermald start
+
+# Scanners and printers
+sudo service saned start
+sudo service cups-browsed start
+
+sudo service speech-dispatcher start
+sudo service unattended-upgrades start
+sudo service bluetooth start
+sudo service openvpn start
+
+# Processor scaling
+sudo service ondemand start
+
+# Kernel modules
+sudo modprobe ppdev
+sudo modprobe lp
+# sudo modprobe -r uvcvideo
+# sudo modprobe -r videodev
+sudo modprobe btusb
+
+# Touch screen
+sudo modprobe hid_multitouch
+

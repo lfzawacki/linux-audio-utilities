@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SUDO=sudo
+NPROC=3 #number of processors - 1 ;)
+TYPE=$1
+MAXFREQ=3.00GHz
+MINFREQ=800MHz
+
+# $SUDO cpupower frequency-set -g $1 -d "$MINFREQ" -u "$MAXFREQ"
+
+for x in $( seq 0 $NPROC )
+do
+   $SUDO cpufreq-set -c $x -d "$MINFREQ" -u "$MAXFREQ"
+done
+
+for x in $( seq 0 $NPROC )
+do
+   $SUDO cpufreq-set -c $x -g $TYPE
+done

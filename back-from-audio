@@ -1,0 +1,45 @@
+#!/bin/bash
+# Re-enable uneeded services for audio recording
+
+pulseaudio -D
+
+
+# Virtual box stuff
+sudo service virtualbox start
+sudo service virtualbox-guest-utils start
+
+# Networked stuff
+sudo service network-manager start
+sudo service samba start
+sudo service smbd start
+sudo service nmbd start
+sudo service avahi-daemon start
+sudo service ntp start
+sudo service ufw start
+sudo service openvpn start
+
+# Start sensors service (temperature, fan, etc...)
+sudo service lm-sensors start
+sudo service thermald start
+
+# Scanners and printers
+sudo service saned start
+sudo service cups-browsed start
+
+# Random stuff
+sudo service unattended-upgrades start
+sudo service speech-dispatcher start
+sudo service bluetooth start
+
+# Set ondemand processor scaling back up
+sudo service ondemand start
+
+# Kernel modules
+sudo modprobe ppdev
+sudo modprobe lp
+sudo modprobe uvcvideo
+sudo modprobe videodev
+sudo modprobe btusb
+
+# Touch Screen
+sudo modprobe hid_multitouch

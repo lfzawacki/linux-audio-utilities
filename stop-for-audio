@@ -1,0 +1,45 @@
+#!/bin/bash
+# Disable uneeded services for audio recording
+
+pulseaudio --kill
+pkill owncloud
+
+# Virtual box stuff
+sudo service virtualbox stop
+sudo service virtualbox-guest-utils stop
+
+# Networked stuff
+sudo service network-manager stop
+sudo service samba stop
+sudo service smbd stop
+sudo service nmbd stop
+sudo service avahi-daemon stop
+sudo service ntp stop
+sudo service ufw stop
+sudo service openvpn stop
+
+# Stop sensors service (temperature, fan, etc...)
+sudo service lm-sensors stop
+sudo service thermald stop
+
+# Scanners and printers
+sudo service saned stop
+sudo service cups-browsed stop
+
+# Random stuff
+sudo service speech-dispatcher stop
+sudo service unattended-upgrades stop
+sudo service bluetooth stop
+
+# Processor scaling
+sudo service ondemand stop
+
+# Kernel modules (webcams, parallel ports, bluetooth)
+sudo modprobe -r ppdev
+sudo modprobe -r lp
+sudo modprobe -r uvcvideo
+sudo modprobe -r videodev
+sudo modprobe -r btusb
+
+# Touch screen
+sudo modprobe -r hid_multitouch
